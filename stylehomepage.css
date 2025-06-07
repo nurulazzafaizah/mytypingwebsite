@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    height: 100%;
+    background-color: #0e0e0e;
+    font-family: 'Inter', sans-serif;
+}
+.home-page {
+    min-height: 100vh;
+    background-image: url('./img/framebg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    color: #fff;
+}
+/* .navbar {
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+} */
+.teks {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 100;
+    font-weight: 500;
+    font-size: 1rem;
+}
+/* TODO: */
+.nav-links {
+    position: absolute;
+    display: flex;
+    top: 10px;
+    right: 10px;
+    z-index: 100;
+    font-weight: 700;
+    font-size: 9rem;
+    gap: 1rem;
+}
+.nav-links div {
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.logo-center {
+    width: 300px;
+    margin-bottom: 1rem;
+    z-index: 5;
+}
+.logo-center img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.hero-section {
+    max-width: 1440px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+.hero-text {
+    flex: 1;
+}
+.hero-text p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+.hero-text .highlight {
+    font-size: 2rem;
+    font-weight: 800;
+}
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.btn.primary {
+    background-color: #06b0ff;
+    color: #fff;
+    border: none;
+}
+.btn.secondary {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #06b0ff;
+}
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.hero-image img {
+    max-width: 150px;
+    height: auto;
+}
+@media (max-width: 768px) {
+    .hero-section {
+    flex-direction: column;
+    text-align: center;
+    }
+    .navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    }
+}
