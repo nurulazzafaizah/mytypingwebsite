@@ -5,12 +5,12 @@
 }
 html, body {
     height: 100%;
-    background-color: #0e0e0e;
+    background: linear-gradient(95deg, #ff66cc, #99ccff);
     font-family: 'Inter', sans-serif;
 }
 .home-page {
     min-height: 100vh;
-    background-image: url('./img/framebg.png');
+    /* background-image: url('./img/framebg.png'); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -29,8 +29,9 @@ html, body {
     margin-bottom: 2rem;
 } */
 .teks {
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
     position: absolute;
-    top: 10px;
+    top: 5px;
     left: 10px;
     z-index: 100;
     font-weight: 500;
@@ -40,21 +41,20 @@ html, body {
 .nav-links {
     position: absolute;
     display: flex;
-    top: 10px;
+    top: 5px;
     right: 10px;
     z-index: 100;
-    font-weight: 700;
-    font-size: 9rem;
-    gap: 1rem;
+    gap: 0.5rem;
 }
-.nav-links div {
-    font-weight: 700;
-    font-size: 1.2rem;
+.nav-links div:hover {
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+    color: #348B04;
+    font-weight: 500;
+    font-size: 0.5 rem;
     cursor: pointer;
 }
 .logo-center {
     width: 300px;
-    margin-bottom: 1rem;
     z-index: 5;
 }
 .logo-center img {
