@@ -19,3 +19,4 @@ $sentences = [
 // Konversi ke format JSON
 echo json_encode($sentences);
 ?>
+

@@ -19,6 +19,10 @@
         padding: 1rem 0 0 0;
     }
 
+    [v-cloak] {
+    display: none;
+}
+
     .logoWeType img {
     display: block;
     width: 300px;
@@ -284,15 +288,26 @@
     </main>
 
     <section class="bottom-panel">
+    <div class="papan"></div>
     <div class="score-line">
             WPM: <span id="wpm-score">0</span> | 
             ACC: <span id="acc-score">0%</span>
         </div>
-
-        <!-- Area untuk mengetik -->
-        <div class="typing-area" id="typing-area">
-            <!-- Akan diisi JS nanti -->
-    </div>
+        <div class="target-sentence">
+            {{ currentSentence }}
+        </div>>
+        <textarea 
+            id="typing-area"
+            class="typing-area"
+            v-model="userInput"
+            :disabled="!isStarted || isFinished"
+            @input="handleInput"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            rows="3">
+        </textarea>
         <button class="rank-btn">Rank</button>
     </section>
     </div>
