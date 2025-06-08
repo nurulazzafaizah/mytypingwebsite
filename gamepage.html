@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Arena Permainan - WeType</title>
+<style>
+body {
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(to right, #f7b1ff, #c4e0ff);
+    text-align: center;
+}
+
+header {
+    background-color: transparent;
+    padding: 1rem 0 0 0;
+}
+
+.logoWeType img {
+display: block;
+width: 300px;
+max-width: 100%;
+height: auto;
+margin: 1rem auto;
+z-index: 5;
+}
+/* TODO: */
+.start1 {
+    position: absolute;
+    overflow-x: ellipsis;
+    top: 180px;
+    left: 10px;
+    background-color: #ffec99;
+    padding: 10px 80px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(255, 136, 0, 0.4); /* lebih tebal dan oranye */
+    text-align: left;
+    /* border: 2px solid #ffa200; */
+    color: #b30000;
+    text-shadow: 1px 1px 2px #fff6d6;
+    animation: pulse 1.5s infinite;
+    transition: transform 0.3s ease;
+}
+
+.start1:hover {
+    transform: scale(1.05);
+    background-color: #ffe680;
+}
+
+/* Animasi berdenyut */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 170, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 170, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 170, 0, 0);
+    }
+}
+
+
+.link {
+display: grid;
+grid-auto-flow: column;
+grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* kotak fleksibel */               /* jarak antar box */
+min-width: 80vw;               /* penuh layar */
+position: absolute;
+top: 180px; /* atur supaya tidak menutupi logo */
+right: 0;
+z-index: 100;
+justify-content: end;
+}
+
+.link div {
+background-color: rgb(146, 255, 237);
+color: #333;
+padding: 12px 0;
+text-align: center;
+font-weight: bold;
+border-radius: 8px;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+cursor: pointer;
+transition: transform 0.2s, background-color 0.3s;
+}
+
+.link div:hover {
+background-color: #e0f7ff;
+transform: translateY(-3px);
+}
+
+
+.track-container {
+    position: relative;
+    margin: 80px auto 0 auto;
+    width: 90%;
+    max-width: 90vw;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 4px solid #fff;
+    background-color: #ccc; /* fallback */
+}
+
+/* Background jalan bertumpuk */
+.road-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.road-bg img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Panel START dan terompet */
+.gogo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 100%;
+    background-color: #b73239;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+}
+
+.gogo img {
+    position: absolute;
+    top: 0px; /* geser ke atas */
+    left: 20%;
+    transform: translate(-40%,-35%) rotate(30deg);
+    width: 10rem;
+    z-index: 80;
+}
+
+
+.gogo h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-size: 40px;
+    font-weight: 600;
+    z-index: 30;
+}
+
+.gogo h1 span {
+    display: block;
+}
+
+
+/* Track barisan motor */
+.track {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding-left: 70px; /* geser motor dari panel START */
+    z-index: 3;
+}
+
+/* Gambar skuter */
+.scooter {
+    height: 40px;
+    transition: transform 0.3s;
+}
+
+.bottom-panel {
+    /* position: relative; */
+    background: #f7cfff;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-top: 2px solid #dbaee8;
+    font-family: sans-serif;
+    margin-bottom: 50px;
+}
+.typing-area {
+    flex: 1 1 100%;
+    margin-top: 16px;
+    background: #fff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    min-height: 60px;
+    font-size: 16px;
+    color: #333;
+    font-family: monospace;
+    white-space: pre-wrap;
+    overflow-y: auto;
+}
+
+.score-line {
+    font-size: 16px;
+    font-weight: bold;
+    color: #887070; /* default warna teks hasil (black) */
+}
+
+.score-line .label {
+    color: #000000; /* label abu-abu */
+}
+
+
+.rank-btn {
+    background: #a391f0;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+</style>
+</head>
+<body>
+    <div class="logoWeType"><img src="wetype.png"></div>
+<div class="nav-wrapper"></div>
+<div class="start1">Mulai!</div>
+<nav class="link">
+    <div >Garasi</div>
+    <div>Liga</div>
+    <div>Team</div>
+    <div>Pencapaian</div>
+    <div>Berita</div>
+    </div>
+</nav>
+</header>
+
+<section class="track-container">
+    <div class="road-bg">
+        <img src="BIG-ROAD.png">
+        <img src="real-road.png">
+    </div>
+<div class="gogo" id="startBanner">
+    <img src="efek-terompet.png" alt="Efek Terompet">
+    <h1>
+        <span>S</span>
+        <span>T</span>
+        <span>A</span>
+        <span>R</span>
+        <span>T</span>
+    </h1>
+</div>
+
+<!-- Repeat for 5 tracks -->
+<div class="track motor1">
+    <img src="1.png" alt="Scooter 1" class="scooter" />
+</div>
+<div class="track motor2">
+    <img src="2.png" alt="Scooter 2" class="scooter" />
+</div>
+<div class="track motor3">
+    <img src="3.png" alt="Scooter 3" class="scooter" />
+</div>
+<div class="track motor4">
+    <img src="4.png" alt="Scooter 4" class="scooter" />
+</div>
+<div class="track motor5">
+    <img src="5.png" alt="Scooter 5" class="scooter" />
+</div>
+</section>
+
+<section class="bottom-panel">
+<div class="score-line">
+        WPM: <span id="wpm-score">0</span> | 
+        ACC: <span id="acc-score">0%</span>
+    </div>
+
+    <!-- Area untuk mengetik -->
+    <div class="typing-area" id="typing-area">
+        <!-- Akan diisi JS nanti -->
+        <p>Mengetik di sini...</p>
+    </div>
+    <button class="rank-btn">Rank</button>
+</section>
+
+</body>
+</html>
