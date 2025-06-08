@@ -7,8 +7,19 @@
 <link rel="stylesheet" href="globals.css">
 <link rel="stylesheet" href="styleHomePage.css" />
 </head>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector(".btn.primary").addEventListener("click", () => {
+    window.location.href = "register.html"; // atau halaman registrasi kamu
+  });
+
+  document.querySelector(".btn.secondary").addEventListener("click", () => {
+    window.location.href = "login.html";
+  });
+});
+
+</script>
 <body>
-<script src="app1.js"></script>
 <div class="home-page">
     <div class="logo-center">
     <img src="assets/wetype.png" class="weType" alt="WeType">
